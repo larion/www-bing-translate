@@ -1,0 +1,31 @@
+---
+abstract: 'A client for the Microsoft Translator API'
+author:
+  - 'Larion Garaczi <l4rion@gmail.com>'
+build_requires:
+  ExtUtils::MakeMaker: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 7.04, CPAN::Meta::Converter version 2.150005'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: WWW-Bing-Translate
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  JSON: '0'
+  LWP::UserAgent: '0'
+  Moose: '0'
+  MooseX::HasDefaults::RO: '0'
+  MooseX::StrictConstructor: '0'
+  Test::More: '0'
+  URI: '0'
+  XML::Simple: '0'
+  namespace::autoclean: '0'
+version: v0.0.1
+x_serialization_backend: 'CPAN::Meta::YAML version 0.016'

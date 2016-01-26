@@ -1,0 +1,63 @@
+WWW-Bing-Translate
+
+This is a client library for the Microsoft Translator API
+
+SYNOPSIS
+
+    my $api_key = read_file('/home/myapp/priv/bing.priv');
+    my $bing = WWW::Bing::Translate->new(
+        api_key  => $api_key,
+        app_id   => $app_id,
+    );
+
+    say $bing->translate('nl', 'en', 'voorbeeld'); # outputs 'example'
+
+    my $wav = $bing->speak('de', 'Worüber man nicht sprechen kann, darüber muss man schweigen');
+    open(my $fh, ">", "tractatus.wav");
+    print $fh $wav;
+    system("mplayer tractatus.wav");
+
+    say $bing->detect("Ci vuole un fiore."); # outputs 'it'
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the
+perldoc command.
+
+    perldoc WWW::Bing::Translate
+
+You can also look for information at:
+
+    RT, CPAN's request tracker
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-Bing-Translate
+
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/WWW-Bing-Translate
+
+    CPAN Ratings
+        http://cpanratings.perl.org/d/WWW-Bing-Translate
+
+    Search CPAN
+        http://search.cpan.org/dist/WWW-Bing-Translate/
+
+Github
+
+The source code for this module is hosted on Github:
+
+https://github.com/larion/www-bing-translate
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2016 Larion Garaczi
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
