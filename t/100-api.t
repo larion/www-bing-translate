@@ -1,9 +1,52 @@
 use Test::More;
+use Test::Fatal;
 use WWW::Bing::Translate;
 use HTTP::Response;
 use JSON;
 use URI;
 use feature 'state';
+
+{
+    note "argument validation checks";
+    no warnings 'once', 'redefine';
+    my $bing = WWW::Bing::Translate->new(
+        api_key  => 's3cr3t',
+        app_id   => 'Myapp',
+        auth_url => 'http://auth.url.com',
+        api_url  => 'http://api.url.com',
+    );
+    local *WWW::Bing::Translate::_make_api_call = sub {
+        return ":)";
+    };
+
+    ok exception{$bing->translate}, "translate fails without args";
+    ok exception{$bing->translate('en')}, "translate fails with 1 arg";
+    ok exception{$bing->translate('en', 'hu')}, "translate fails with 2 args";
+    ok exception{$bing->translate({}, 'hu', 'text')}, "translate fails with invalid args (1)";
+    ok exception{$bing->translate('en', {}, 'text')}, "translate fails with invalid args (2)";
+    ok exception{$bing->translate('en', 'hu', {})}, "translate fails with invalid args (3)";
+    is $bing->translate('en', 'hu', 'dunno'), ":)", "translate accepts valid arguments";
+
+    ok exception{$bing->get_translations}, "get_translations fails without args";
+    ok exception{$bing->get_translations('en')}, "get_translations fails with 1 arg";
+    ok exception{$bing->get_translations('en', 'hu')}, "get_translations fails with 2 args";
+    ok exception{$bing->get_translations({}, 'hu', 'text')}, "get_translations fails with invalid args (1)";
+    ok exception{$bing->get_translations('en', {}, 'text')}, "get_translations fails with invalid args (2)";
+    ok exception{$bing->get_translations('en', 'hu', {})}, "get_translations fails with invalid args (3)";
+    ok exception{$bing->get_translations('en', 'hu', 'dunno', 'not-a-hashref')}, "get_translations fails with invalid options argument";
+    is $bing->get_translations('en', 'hu', 'dunno'), ":)", "get_translations accepts valid arguments (no options hash)";
+    is $bing->get_translations('en', 'hu', 'dunno', {}), ":)", "get_translations accepts valid arguments (including options hash)";
+
+    ok exception{$bing->speak}, "speak fails without args";
+    ok exception{$bing->speak('en')}, "speak fails with 1 arg";
+    ok exception{$bing->speak({}, 'something')}, "speak fails with invalid args (1)";
+    ok exception{$bing->speak('en', {})}, "speak fails with invalid args (2)";
+    is $bing->speak('en', 'tic-tac-toe'), ":)", "speak accepts valid arguments";
+
+    ok exception{$bing->detect}, "detect fails without args";
+    ok exception{$bing->detect({})}, "detect fails with invalid args (1)";
+    is $bing->detect('blablabla'), ":)", "detect accepts valid arguments";
+}
 
 {
     no warnings 'once', 'redefine';

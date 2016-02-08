@@ -3,12 +3,14 @@ package WWW::Bing::Translate;
 use Moose;
 use MooseX::HasDefaults::RO;
 use MooseX::StrictConstructor;
-use LWP::UserAgent;
+use namespace::autoclean;
+
+use Carp;
 use JSON;
+use LWP::UserAgent;
+use Params::Validate qw(:all);
 use URI;
 use XML::Simple;
-use namespace::autoclean;
-use Carp;
 
 our $VERSION = '1.0.0';
 
@@ -100,7 +102,14 @@ sub _build_ua_bing {
 }
 
 sub translate {
-    my ($self, $from, $to, $text) = @_;
+    my $self = shift;
+    my ($from, $to, $text) = validate_pos(
+        @_,
+        {type => SCALAR, regex => '.+'},
+        {type => SCALAR, regex => '.+'},
+        {type => SCALAR},
+    );
+
     return $self->_make_api_call(
         {
             call   => 'Translate',
@@ -120,9 +129,17 @@ sub translate {
 }
 
 sub get_translations {
-    my ($self, $from, $to, $text, $opts) = @_;
+    my $self = shift;
+    my ($from, $to, $text, $opts) = validate_pos(
+        @_,
+        {type => SCALAR, regex => '.+'},
+        {type => SCALAR, regex => '.+'},
+        {type => SCALAR},
+        {type => HASHREF, regex => '.+', optional => 1},
+    );
     $opts //= {};
     my $max_translations = $opts->{max_translations} // 5;
+
     return $self->_make_api_call(
         {
             call   => 'GetTranslations',
@@ -144,7 +161,9 @@ sub get_translations {
 }
 
 sub detect {
-    my ($self, $text) = @_;
+    my $self = shift;
+    my ($text) = validate_pos(@_, {type => SCALAR});
+
     return $self->_make_api_call(
         {
             call   => 'Detect',
@@ -162,7 +181,13 @@ sub detect {
 }
 
 sub speak {
-    my ($self, $language, $text) = @_;
+    my $self = shift;
+    my ($language, $text) = validate_pos(
+        @_,
+        {type => SCALAR, regex => '.+'},
+        {type => SCALAR},
+    );
+
     return $self->_make_api_call(
         {
             call   => 'speak',
@@ -258,7 +283,7 @@ This is a client library for Microsoft's translate service. Currently you can us
 
 =back
 
-All API-calling methods carp() unless they get a successful reply from the service.
+All API-calling methods croak() unless they get a successful reply from the service.
 
 =head1 FUNCTIONS
 
@@ -445,7 +470,7 @@ The code of the detected language.
 
 =head1 AUTHOR
 
-This module is written by Larion Garaczi <l4rion@gmail.com>
+This module is written by Larion Garaczi <l4rion@gmail.com> (2016)
 
 =head1 SOURCE CODE
 
@@ -454,8 +479,6 @@ The source code for this module is hosted on GitHub L<https://github.com/larion/
 Feel free to contribute :)
 
 =head1 LICENSE AND COPYRIGHT
-
-Copyright 2016 Larion Garaczi
 
 This module is free software and is published under the same
 terms as Perl itself.

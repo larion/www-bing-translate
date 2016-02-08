@@ -16,5 +16,7 @@ WriteMakefile(
         'XML::Simple'               => 0,
         'namespace::autoclean'      => 0,
         'Carp'                      => 0,
+        'Test::Fatal'               => 0,
+        'Params::Validate'          => 0,
     },
 );
