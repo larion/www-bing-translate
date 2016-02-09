@@ -471,7 +471,7 @@ The code of the detected language.
 
 =head1 AUTHOR
 
-This module is written by Larion Garaczi <l4rion@gmail.com> (2016)
+This module is written by Larion Garaczi <larion@cpan.org> (2016)
 
 =head1 SOURCE CODE
 

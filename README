@@ -57,7 +57,7 @@ https://github.com/larion/lingua-translator-microsoft
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2016 Larion Garaczi
+Copyright (C) 2016 Larion Garaczi <larion@cpan.org>
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

@@ -2,7 +2,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME          => 'Lingua::Translator::Microsoft',
-    AUTHOR        => 'Larion Garaczi <l4rion@gmail.com>',
+    AUTHOR        => 'Larion Garaczi <larion@cpan.org>',
     VERSION_FROM  => 'lib/Lingua/Translator/Microsoft.pm',
     ABSTRACT_FROM => 'lib/Lingua/Translator/Microsoft.pm',
     PREREQ_PM => {
