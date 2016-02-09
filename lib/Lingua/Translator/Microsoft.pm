@@ -11,8 +11,9 @@ use LWP::UserAgent;
 use Params::Validate qw(:all);
 use URI;
 use XML::Simple;
+use version;
 
-our $VERSION = v1.0.0;
+our $VERSION = qv('1.0.0');
 
 has api_key => (
     isa      => 'Str',
