@@ -1,6 +1,6 @@
 use Test::More;
 use Test::Fatal;
-use WWW::Bing::Translate;
+use Lingua::Translator::Microsoft;
 use HTTP::Response;
 use JSON;
 use URI;
@@ -9,13 +9,13 @@ use feature 'state';
 {
     note "argument validation checks";
     no warnings 'once', 'redefine';
-    my $bing = WWW::Bing::Translate->new(
+    my $bing = Lingua::Translator::Microsoft->new(
         api_key  => 's3cr3t',
         app_id   => 'Myapp',
         auth_url => 'http://auth.url.com',
         api_url  => 'http://api.url.com',
     );
-    local *WWW::Bing::Translate::_make_api_call = sub {
+    local *Lingua::Translator::Microsoft::_make_api_call = sub {
         return ":)";
     };
 
@@ -225,7 +225,7 @@ use feature 'state';
         # reset counter
         $call_counter = 0;
 
-        my $bing = WWW::Bing::Translate->new(
+        my $bing = Lingua::Translator::Microsoft->new(
             api_key  => 's3cr3t',
             app_id   => 'Myapp',
             auth_url => 'http://auth.url.com',
@@ -238,7 +238,7 @@ use feature 'state';
         is_deeply(scalar $bing->$method(@$args), $expected, "right results");
         is($call_counter, 3, "Token is reused, so only one extra call");
 
-        $bing = WWW::Bing::Translate->new(
+        $bing = Lingua::Translator::Microsoft->new(
             api_key  => 's3cr3t',
             app_id   => 'Myapp',
             auth_url => 'http://auth.url.com',

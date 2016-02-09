@@ -1,4 +1,4 @@
-lib/WWW/Bing/Translate.pm
+lib/Lingua/Translator/Microsoft.pm
 Makefile.PL
 MANIFEST.SKIP
 MANIFEST			This list of files

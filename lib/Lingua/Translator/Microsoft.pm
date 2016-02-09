@@ -1,4 +1,4 @@
-package WWW::Bing::Translate;
+package Lingua::Translator::Microsoft;
 
 use Moose;
 use MooseX::HasDefaults::RO;
@@ -49,7 +49,7 @@ has clock => (
 
 has ua_string => (
     isa     => 'Str',
-    default => "WWW-Bing-Translate/$VERSION",
+    default => "Lingua-Translator-Microsoft/$VERSION",
 );
 
 has _token => (
@@ -248,12 +248,12 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME
 
-WWW::Bing::Translate - A client library for the Microsoft Translator API
+Lingua::Translator::Microsoft - A client library for the Microsoft Translator API
 
 =head1 SYNOPSIS
 
     my $api_key = read_file('/home/myapp/priv/bing.priv');
-    my $bing = WWW::Bing::Translate->new(
+    my $bing = Lingua::Translator::Microsoft->new(
         api_key  => $api_key,
         app_id   => $app_id,
     );
@@ -287,9 +287,9 @@ All API-calling methods croak() unless they get a successful reply from the serv
 
 =head1 FUNCTIONS
 
-=head2 WWW::Bing::Translate->new(api_key => $api_key, app_id => $app_id);
+=head2 Lingua::Translator::Microsoft->new(api_key => $api_key, app_id => $app_id);
 
-Instantiate a new WWW::Bing::Translate object.
+Instantiate a new Lingua::Translator::Microsoft object.
 
 Arguments:
 
@@ -327,7 +327,7 @@ Returns:
 
 =item
 
-A new WWW::Bing::Translate instance.
+A new Lingua::Translator::Microsoft instance.
 
 =back
 
@@ -474,7 +474,7 @@ This module is written by Larion Garaczi <l4rion@gmail.com> (2016)
 
 =head1 SOURCE CODE
 
-The source code for this module is hosted on GitHub L<https://github.com/larion/www-bing-translate>.
+The source code for this module is hosted on GitHub L<https://github.com/larion/lingua-translator-microsoft>.
 
 Feel free to contribute :)
 

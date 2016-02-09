@@ -1,10 +1,10 @@
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME          => 'WWW::Bing::Translate',
+    NAME          => 'Lingua::Translator::Microsoft',
     AUTHOR        => 'Larion Garaczi <l4rion@gmail.com>',
-    VERSION_FROM  => 'lib/WWW/Bing/Translate.pm',
-    ABSTRACT_FROM => 'lib/WWW/Bing/Translate.pm',
+    VERSION_FROM  => 'lib/Lingua/Translator/Microsoft.pm',
+    ABSTRACT_FROM => 'lib/Lingua/Translator/Microsoft.pm',
     PREREQ_PM => {
         'Test::More'                => 0,
         'LWP::UserAgent'            => 0,
