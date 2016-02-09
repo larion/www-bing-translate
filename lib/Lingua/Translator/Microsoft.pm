@@ -253,20 +253,20 @@ Lingua::Translator::Microsoft - A client library for the Microsoft Translator AP
 
 =head1 SYNOPSIS
 
-    my $api_key = read_file('/home/myapp/priv/bing.priv');
-    my $bing = Lingua::Translator::Microsoft->new(
+    my $api_key = read_file('/home/myapp/priv/translator.priv');
+    my $translator = Lingua::Translator::Microsoft->new(
         api_key  => $api_key,
         app_id   => $app_id,
     );
 
-    say $bing->translate('nl', 'en', 'voorbeeld'); # outputs 'example'
+    say $translator->translate('nl', 'en', 'voorbeeld'); # outputs 'example'
 
-    my $wav = $bing->speak('de', 'Worüber man nicht sprechen kann, darüber muss man schweigen');
+    my $wav = $translator->speak('de', 'Worüber man nicht sprechen kann, darüber muss man schweigen');
     open(my $fh, ">", "tractatus.wav");
     print $fh $wav;
     system("mplayer tractatus.wav");
 
-    say $bing->detect("Ci vuole un fiore."); # outputs 'it'
+    say $translator->detect("Ci vuole un fiore."); # outputs 'it'
 
 =head1 DESCRIPTION
 
@@ -332,7 +332,7 @@ A new Lingua::Translator::Microsoft instance.
 
 =back
 
-=head2 $bing->translate($source_language_code, $target_language_code, $text)
+=head2 $translator->translate($source_language_code, $target_language_code, $text)
 
 Translate some text
 
@@ -366,7 +366,7 @@ The translated text as a string.
 
 =back
 
-=head2 $bing->get_translations($source_language_code, $target_language_code, $text, { max_translations => 3})
+=head2 $translator->get_translations($source_language_code, $target_language_code, $text, { max_translations => 3})
 
 Translate some text (with multiple results).
 
@@ -413,7 +413,7 @@ In scalar context an arrayref of strings (translations).
 
 =back
 
-=head2 $bing->speak($language_code, $text)
+=head2 $translator->speak($language_code, $text)
 
 Pronounce some text
 
@@ -443,7 +443,7 @@ A wav stream containing the text spoken in the chosen language.
 
 =back
 
-=head2 $bing->detect($text)
+=head2 $translator->detect($text)
 
 Detect the language of a text.
 
