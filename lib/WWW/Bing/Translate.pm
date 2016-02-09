@@ -12,7 +12,7 @@ use Params::Validate qw(:all);
 use URI;
 use XML::Simple;
 
-our $VERSION = '1.0.0';
+our $VERSION = v1.0.0;
 
 has api_key => (
     isa      => 'Str',
