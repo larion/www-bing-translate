@@ -1,4 +1,5 @@
 package Lingua::Translator::Microsoft;
+use 5.10.0;
 
 use Moose;
 use MooseX::HasDefaults::RO;
@@ -13,7 +14,7 @@ use URI;
 use XML::Simple;
 use version;
 
-our $VERSION = qv('1.0.0');
+our $VERSION = qv('1.0.1');
 
 has api_key => (
     isa      => 'Str',

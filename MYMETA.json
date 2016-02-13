@@ -43,11 +43,12 @@
             "Test::More" : "0",
             "URI" : "0",
             "XML::Simple" : "0",
-            "namespace::autoclean" : "0"
+            "namespace::autoclean" : "0",
+            "perl" : "5.010000"
          }
       }
    },
    "release_status" : "stable",
-   "version" : "v1.0.0",
+   "version" : "v1.0.1",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }

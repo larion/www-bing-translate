@@ -5,6 +5,7 @@ WriteMakefile(
     AUTHOR        => 'Larion Garaczi <larion@cpan.org>',
     VERSION_FROM  => 'lib/Lingua/Translator/Microsoft.pm',
     ABSTRACT_FROM => 'lib/Lingua/Translator/Microsoft.pm',
+    MIN_PERL_VERSION => 5.10.0,
     PREREQ_PM => {
         'Test::More'                => 0,
         'LWP::UserAgent'            => 0,
