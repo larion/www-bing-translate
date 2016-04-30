@@ -106,6 +106,7 @@ use feature 'state';
         is_deeply(\%qs, {
             text     => 'le Big Mac',
             language => 'fr',
+            format => 'audio/mp3',
         }, "speak request - query form");
         is(
             $self->default_header('Authorization'),
@@ -211,7 +212,7 @@ use feature 'state';
             expected => 'fr',
         },
         "speak" => {
-            args     => ['fr', 'le Big Mac'],
+            args     => ['fr', 'le Big Mac', {format => 'audio/mp3'}],
             expected => 'some binary data',
         },
     };

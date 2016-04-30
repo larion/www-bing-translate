@@ -14,7 +14,7 @@ use URI;
 use XML::Simple;
 use version;
 
-our $VERSION = qv('1.0.1');
+our $VERSION = qv('1.1.0');
 
 has api_key => (
     isa      => 'Str',
@@ -184,10 +184,11 @@ sub detect {
 
 sub speak {
     my $self = shift;
-    my ($language, $text) = validate_pos(
+    my ($language, $text, $opts) = validate_pos(
         @_,
         {type => SCALAR, regex => '.+'},
         {type => SCALAR},
+        {type => HASHREF, regex => '.+', optional => 1},
     );
 
     return $self->_make_api_call(
@@ -197,6 +198,7 @@ sub speak {
             args   => {
                 language        => $language,
                 text            => $text,
+                $opts ? %$opts : (),
             },
             process_response => sub {
                 my $r           = shift;
@@ -263,7 +265,7 @@ Lingua::Translator::Microsoft - A client library for the Microsoft Translator AP
     say $translator->translate('nl', 'en', 'voorbeeld'); # outputs 'example'
 
     my $wav = $translator->speak('de', 'Worüber man nicht sprechen kann, darüber muss man schweigen');
-    open(my $fh, ">", "tractatus.wav");
+    open(my $fh, ">", "tractatus.wav", {format => "mp3"});
     print $fh $wav;
     system("mplayer tractatus.wav");
 
