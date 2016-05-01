@@ -264,10 +264,10 @@ Lingua::Translator::Microsoft - A client library for the Microsoft Translator AP
 
     say $translator->translate('nl', 'en', 'voorbeeld'); # outputs 'example'
 
-    my $wav = $translator->speak('de', 'Worüber man nicht sprechen kann, darüber muss man schweigen');
-    open(my $fh, ">", "tractatus.wav", {format => "mp3"});
-    print $fh $wav;
-    system("mplayer tractatus.wav");
+    my $mp3 = $translator->speak('de', 'Worüber man nicht sprechen kann, darüber muss man schweigen');
+    open(my $fh, ">", "tractatus.mp3", {format => "mp3"});
+    print $fh $mp3;
+    system("mplayer tractatus.mp3");
 
     say $translator->detect("Ci vuole un fiore."); # outputs 'it'
 
