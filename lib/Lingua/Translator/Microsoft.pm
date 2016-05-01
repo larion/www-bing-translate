@@ -14,7 +14,7 @@ use URI;
 use XML::Simple;
 use version;
 
-our $VERSION = qv('1.1.0');
+our $VERSION = qv('1.1.1');
 
 has api_key => (
     isa      => 'Str',
